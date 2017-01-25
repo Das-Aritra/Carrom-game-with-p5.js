@@ -3,6 +3,7 @@ var playline;
 var lineno=3;
 //var strikervel=0;
 //var diceok=false;
+var attempts=0;
 var points=0;
 var dpointer;
 var fmeter;
@@ -117,6 +118,9 @@ function draw() {
     if(dices[i].inpocket(board)) 
     {dices.splice(i,1); points+=1;}
  }
+  if(dices.length === 0){
+		text('NUMBER OF ATTEMPTS : '+attempts,width/2-50,height/2);
+  
   if (striker.gameon === false){
     dpointer.render();
     dpointer.update(striker);
@@ -150,7 +154,7 @@ function keyPressed(){
   if(key == 'A') dpointer.rotation = -0.05;
   else if (key == 'S') dpointer.rotation = 0.05;
   
-  if (key == ' ') {striker.boost(dpointer,fmeter.force); striker.gameon = true;}
+  if (key == ' ') {attempts+=1;striker.boost(dpointer,fmeter.force); striker.gameon = true;}
    
   if (key == 'W') {fmeter.metvel=2; }
   else if (key == 'Q') {fmeter.metvel=-2;}
@@ -218,6 +222,8 @@ function changeDirection(a,b){
       */
       a.update();
       b.update();
+      a.collisionWithBoardEdges(board);
+      b.collisionWithBoardEdges(board);
   
 }
 
