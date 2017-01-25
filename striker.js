@@ -41,18 +41,40 @@ function Striker(playline,num,friction)
   
   this.collidingWithBoardEdges = function(board){
     
-      if((this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y-(this.size/2)<=board.boundary[1]) ||
-          (this.pos.x+(this.size/2) >=board.boundary[2] && this.pos.y-(this.size/2)<=board.boundary[1]) ||
-          (this.pos.x+(this.size/2)>=board.boundary[2] && this.pos.y+(this.size/2)>=board.boundary[3]) ||
-          (this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y+(this.size/2)>=board.boundary[3]))
-          {
+    if(this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y-(this.size/2)<=board.boundary[1])
+		{this.pos.x = board.boundary[0]+this.size/2;
+		this.pos.y = board.boundary[1]+this.size/2;
+		this.vel.x*=-1;
+		this.vel.y*=-1;}
+	else if(this.pos.x+(this.size/2) >=board.boundary[2] && this.pos.y-(this.size/2)<=board.boundary[1])
+		{this.pos.x=board.boundary[2]-this.size/2;
+		this.pos.y = board.boundary[1]+this.size/2;
+		this.vel.x*=-1;
+		this.vel.y*=-1;}
+	else if(this.pos.x+(this.size/2)>=board.boundary[2] && this.pos.y+(this.size/2)>=board.boundary[3])
+		{ this.pos.x = board.boundary[2]-this.size/2;
+		  this.pos.y = board.boundary[3]-this.size/2;
+		  this.vel.x*=-1;
+		  this.vel.y*=-1;}
+	else if(this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y+(this.size/2)>=board.boundary[3])
+          {	this.pos.x=board.boundary[0]+this.size/2;
+			this.pos.y = board.boundary[3]-this.size/2;
             this.vel.x*=-1;
-            this.vel.y*=-1;
-          }
-      if (this.pos.x-(this.size/2)<= board.boundary[0] || this.pos.x+(this.size/2)>=board.boundary[2])
-          this.vel.x*=-1;
-      else if (this.pos.y-(this.size/2)<=board.boundary[1] || this.pos.y+(this.size/2)>=board.boundary[3])
-          this.vel.y*=-1;
+            this.vel.y*=-1;}
+     else if (this.pos.x-(this.size/2)<= board.boundary[0])
+			{this.pos.x=board.boundary[0]+this.size/2;
+			this.vel.x*=-1;}
+	else if (this.pos.x+(this.size/2)>=board.boundary[2])
+			{ this.pos.x=board.boundary[2]-this.size;
+			  this.vel.x*=-1;}
+      else if (this.pos.y-(this.size/2)<=board.boundary[1]) 
+			{ this.pos.y = board.boundary[1]+this.size/2;
+			this.vel.y*=-1;}
+	else if (this.pos.y+(this.size/2)>=board.boundary[3])
+			{ this.pos.y=board.boundary[3]-this.size/2;
+			this.vel.y*=-1;}
+    
+    this.move();
      
   }
   
@@ -151,18 +173,40 @@ function Dice(board,position){
   
   this.collidingWithBoardEdges = function(board){
     
-      if((this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y-(this.size/2)<=board.boundary[1]) ||
-          (this.pos.x+(this.size/2) >=board.boundary[2] && this.pos.y-(this.size/2)<=board.boundary[1]) ||
-          (this.pos.x+(this.size/2)>=board.boundary[2] && this.pos.y+(this.size/2)>=board.boundary[3]) ||
-          (this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y+(this.size/2)>=board.boundary[3]))
-          {
+    if(this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y-(this.size/2)<=board.boundary[1])
+		{this.pos.x = board.boundary[0]+this.size/2;
+		this.pos.y = board.boundary[1]+this.size/2;
+		this.vel.x*=-1;
+		this.vel.y*=-1;}
+	else if(this.pos.x+(this.size/2) >=board.boundary[2] && this.pos.y-(this.size/2)<=board.boundary[1])
+		{this.pos.x=board.boundary[2]-this.size/2;
+		this.pos.y = board.boundary[1]+this.size/2;
+		this.vel.x*=-1;
+		this.vel.y*=-1;}
+	else if(this.pos.x+(this.size/2)>=board.boundary[2] && this.pos.y+(this.size/2)>=board.boundary[3])
+		{ this.pos.x = board.boundary[2]-this.size/2;
+		  this.pos.y = board.boundary[3]-this.size/2;
+		  this.vel.x*=-1;
+		  this.vel.y*=-1;}
+	else if(this.pos.x-(this.size/2)<=board.boundary[0] && this.pos.y+(this.size/2)>=board.boundary[3])
+          {	this.pos.x=board.boundary[0]+this.size/2;
+			this.pos.y = board.boundary[3]-this.size/2;
             this.vel.x*=-1;
-            this.vel.y*=-1;
-          }
-      if (this.pos.x-(this.size/2)<= board.boundary[0] || this.pos.x+(this.size/2)>=board.boundary[2])
-          this.vel.x*=-1;
-      else if (this.pos.y-(this.size/2)<=board.boundary[1] || this.pos.y+(this.size/2)>=board.boundary[3])
-          this.vel.y*=-1;
+            this.vel.y*=-1;}
+     else if (this.pos.x-(this.size/2)<= board.boundary[0])
+			{this.pos.x=board.boundary[0]+this.size/2;
+			this.vel.x*=-1;}
+	else if (this.pos.x+(this.size/2)>=board.boundary[2])
+			{ this.pos.x=board.boundary[2]-this.size;
+			  this.vel.x*=-1;}
+      else if (this.pos.y-(this.size/2)<=board.boundary[1]) 
+			{ this.pos.y = board.boundary[1]+this.size/2;
+			this.vel.y*=-1;}
+	else if (this.pos.y+(this.size/2)>=board.boundary[3])
+			{ this.pos.y=board.boundary[3]-this.size/2;
+			this.vel.y*=-1;}
+    
+    this.update();
      
   }
   
