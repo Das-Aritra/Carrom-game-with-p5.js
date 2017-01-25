@@ -8,7 +8,7 @@ function Board()
   this.pocket_d = new Pocket(this.w+30,this.h+30,30);
   this.pockets= [this.pocket_a,this.pocket_b,this.pocket_c,this.pocket_d];
   this.boundary = [55,55,55+this.w-10,55+this.h-10];
-  this.friction = 0.95;
+  this.friction = 0.97;
   
   this.render = function(){
     noFill();
@@ -84,7 +84,7 @@ function ForceMeter()
   
   this.setForce = function()
   {
-    var f = map(this.meter_x,this.x,this.x+this.h-5,5,50);
+    var f = map(this.meter_x,this.x,this.x+this.h-5,5,28);
     this.force =f;
   }
   
